@@ -18,6 +18,9 @@ main_menu() {
   echo "3. Перевірити IP-адресу"
   echo "4. Вийти"
   echo "5. Встановлення pulseaudio"
+  echo "6. Встановлення flatpack"
+  echo "7. Встановлення Bottles"
+  echo "8. Встановлення Telegram"
   echo "=============================="
   read -p "Вибери опцію: " choice
 
@@ -29,11 +32,18 @@ main_menu() {
     5) install_pulseaudio ;;
     6) install_flatpack ;;
     7) install_bottles ;;
+    8) install_telegram ;;
     *) echo "Невірний вибір. Спробуй ще раз."; sleep 2; main_menu ;;
   esac
 }
 
 # Функції
+install_telegram() {
+  echo "Встановлення Telegram"
+  flatpak install flathub org.telegram.desktop
+  pause_return
+}
+
 install_bottles(){
   echo "Встановлення bottles"
   flatpak install flathub com.usebottles.bottles
