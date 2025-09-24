@@ -17,6 +17,7 @@ main_menu() {
   echo "2. Встановити VLC"
   echo "3. Перевірити IP-адресу"
   echo "4. Вийти"
+  echo "5. Встановлення pulseaudio"
   echo "=============================="
   read -p "Вибери опцію: " choice
 
@@ -25,11 +26,18 @@ main_menu() {
     2) install_vlc ;;
     3) show_ip ;;
     4) exit_script ;;
+    5) install_pulseaudio ;;
     *) echo "Невірний вибір. Спробуй ще раз."; sleep 2; main_menu ;;
   esac
 }
 
 # Функції
+install_pulseaudio() {
+  echo "Встановлення pulseaudio"
+  sudo apt install pulseaudio -y
+  pause_return
+}
+
 update_system() {
   echo "🔄 Оновлення системи..."
   sudo apt update && sudo apt upgrade -y
