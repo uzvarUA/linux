@@ -27,11 +27,27 @@ main_menu() {
     3) show_ip ;;
     4) exit_script ;;
     5) install_pulseaudio ;;
+    6) install_flatpack ;;
+    7) install_bottles ;;
     *) echo "Невірний вибір. Спробуй ще раз."; sleep 2; main_menu ;;
   esac
 }
 
 # Функції
+install_bottles(){
+  echo "Встановлення bottles"
+  flatpak install flathub com.usebottles.bottles
+  pause_return
+}
+
+install_flatpak() {
+  echo "Встановлення flatpak"
+  sudo apt install flatpak
+  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  echo "Перезавантажте систему (опціонально)"
+  pause_return
+}
+
 install_pulseaudio() {
   echo "Встановлення pulseaudio"
   sudo apt install pulseaudio -y
